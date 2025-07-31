@@ -1,32 +1,37 @@
-// The input prompt for the list of froyo flavors
-const input = prompt("Enter your favourite Froyo flavors:");
-
-// Split input
-const flavors = input.split(",");
-console.log(flavors);
-
-// Loop for arrays of flavors // and Object to keep a count
-const flavorCount = {};
-
-for (let flavor of flavors) {
-  if (flavorCount[flavor]) {
-    flavorCount[flavor]++;
-  } else {
-    flavorCount[flavor] = 1;
-  }
-}
-
-// Number of each flavor *** CHECK AGAIN ***
-function countFlavors(flavors) {
-  const flavorCount = {};
-
+/// Loop for flavors ///
+function countFlavorOrders(flavors) {
+  const flavorCounts = {};
   for (let flavor of flavors) {
-    if (flavorCount[flavor]) {
-      flavorCount[flavor]++;
-    } else {
-      flavorCount[flavor] = 1;
+    const standardflavor = flavor.trim().toLowerCase();
+    if (standardflavor) {
+      if (flavorCounts[standardflavor]) {
+        flavorCounts[standardflavor]++;
+      } else {
+        flavorCounts[standardflavor] = 1;
+      }
     }
   }
+  return flavorCounts;
+}
 
-  return flavorCount;
+// *** The input message *** //
+const userInput = prompt("Enter your favorite Froyo flavors:");
+
+// Array of string splits ///
+if (userInput) {
+  const flavors = userInput.split(",");
+  console.log(flavors);
+
+  const flavorCounts = countFlavorOrders(flavors);
+
+  if (Object.keys(flavorCounts).length === 0) {
+    console.log("Enter valid flavors.");
+  } else {
+    console.log("Thank you!! Please review your order:");
+    for (const [flavor, count] of Object.entries(flavorCounts)) {
+      console.log(`${flavor}: ${count} order${count > 1 ? "s" : ""}`);
+    }
+  }
+} else {
+  console.log("No flavors added, please add atleast 1 flavor to the order.");
 }
