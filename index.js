@@ -1,19 +1,3 @@
-/// Loop for flavors ///
-function countFlavorOrders(flavors) {
-  const flavorCounts = {};
-  for (let flavor of flavors) {
-    const standardflavor = flavor.trim().toLowerCase();
-    if (standardflavor) {
-      if (flavorCounts[standardflavor]) {
-        flavorCounts[standardflavor]++;
-      } else {
-        flavorCounts[standardflavor] = 1;
-      }
-    }
-  }
-  return flavorCounts;
-}
-
 // *** The input message *** //
 const userInput = prompt("Enter your favorite Froyo flavors:");
 
@@ -34,4 +18,20 @@ if (userInput) {
   }
 } else {
   console.log("No flavors added, please add atleast 1 flavor to the order.");
+}
+
+/// Loop for flavors /// switch done to the end //
+function countFlavorOrders(flavors) {
+  const flavorCounts = {};
+  for (let flavor of flavors) {
+    const standardflavor = flavor.trim().toLowerCase();
+    if (standardflavor) {
+      if (flavorCounts[standardflavor]) {
+        flavorCounts[standardflavor]++;
+      } else {
+        flavorCounts[standardflavor] = 1;
+      }
+    }
+  }
+  return flavorCounts;
 }
