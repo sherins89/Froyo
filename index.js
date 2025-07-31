@@ -11,18 +11,19 @@ if (userInput) {
   if (Object.keys(flavorCounts).length === 0) {
     console.log("Enter valid flavors.");
   } else {
-    console.log("Thank you!! Please review your order:");
+    console.log("Thank you!! Please review your order:"); // Output if atleast 1 value added //
     for (const [flavor, count] of Object.entries(flavorCounts)) {
       console.log(`${flavor}: ${count} order${count > 1 ? "s" : ""}`);
     }
   }
 } else {
-  console.log("No flavors added, please add atleast 1 flavor to the order.");
+  console.log("No flavors added, please add atleast 1 flavor to the order."); // Output for blank value //
 }
 
-/// Loop for flavors /// switch done to the end //
+// Loop for flavors /// switch done to the end //
+// Variable and function have proper name tags //
 function countFlavorOrders(flavors) {
-  const flavorCounts = {};
+  const flavorCounts = {}; // object count //
   for (let flavor of flavors) {
     const standardflavor = flavor.trim().toLowerCase();
     if (standardflavor) {
